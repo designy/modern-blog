@@ -1,0 +1,61 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="46">
+            <item index="0" class="java.lang.String" itemvalue="annoy" />
+            <item index="1" class="java.lang.String" itemvalue="gensim" />
+            <item index="2" class="java.lang.String" itemvalue="implicit" />
+            <item index="3" class="java.lang.String" itemvalue="django-reverse-admin" />
+            <item index="4" class="java.lang.String" itemvalue="html5lib" />
+            <item index="5" class="java.lang.String" itemvalue="emoji" />
+            <item index="6" class="java.lang.String" itemvalue="joblib" />
+            <item index="7" class="java.lang.String" itemvalue="libwapiti" />
+            <item index="8" class="java.lang.String" itemvalue="html2text" />
+            <item index="9" class="java.lang.String" itemvalue="django-admin-autocomplete-filter" />
+            <item index="10" class="java.lang.String" itemvalue="django-storages" />
+            <item index="11" class="java.lang.String" itemvalue="drf-yasg" />
+            <item index="12" class="java.lang.String" itemvalue="django-tinymce" />
+            <item index="13" class="java.lang.String" itemvalue="django-hijack" />
+            <item index="14" class="java.lang.String" itemvalue="django-multiselectfield" />
+            <item index="15" class="java.lang.String" itemvalue="hazm" />
+            <item index="16" class="java.lang.String" itemvalue="django-cors-headers" />
+            <item index="17" class="java.lang.String" itemvalue="django-webpack-loader" />
+            <item index="18" class="java.lang.String" itemvalue="django-polymorphic" />
+            <item index="19" class="java.lang.String" itemvalue="django-simple-history" />
+            <item index="20" class="java.lang.String" itemvalue="django-celery-beat" />
+            <item index="21" class="java.lang.String" itemvalue="django-imagekit" />
+            <item index="22" class="java.lang.String" itemvalue="django-compat" />
+            <item index="23" class="java.lang.String" itemvalue="django-nested-inline" />
+            <item index="24" class="java.lang.String" itemvalue="django-durationwidget" />
+            <item index="25" class="java.lang.String" itemvalue="django-import-export" />
+            <item index="26" class="java.lang.String" itemvalue="ipython" />
+            <item index="27" class="java.lang.String" itemvalue="aiohttp-retry" />
+            <item index="28" class="java.lang.String" itemvalue="arabic-reshaper" />
+            <item index="29" class="java.lang.String" itemvalue="django-admin-list-filter-dropdown" />
+            <item index="30" class="java.lang.String" itemvalue="django-debug-toolbar" />
+            <item index="31" class="java.lang.String" itemvalue="boto3" />
+            <item index="32" class="java.lang.String" itemvalue="elastic-apm" />
+            <item index="33" class="java.lang.String" itemvalue="django-admin-rangefilter-jalali" />
+            <item index="34" class="java.lang.String" itemvalue="django-csp" />
+            <item index="35" class="java.lang.String" itemvalue="ghp-import" />
+            <item index="36" class="java.lang.String" itemvalue="django-filter" />
+            <item index="37" class="java.lang.String" itemvalue="django-colorfield" />
+            <item index="38" class="java.lang.String" itemvalue="django-redis" />
+            <item index="39" class="java.lang.String" itemvalue="django-js-reverse" />
+            <item index="40" class="java.lang.String" itemvalue="selenium" />
+            <item index="41" class="java.lang.String" itemvalue="uWSGI" />
+            <item index="42" class="java.lang.String" itemvalue="pymongo" />
+            <item index="43" class="java.lang.String" itemvalue="finglish" />
+            <item index="44" class="java.lang.String" itemvalue="PersianG2p" />
+            <item index="45" class="java.lang.String" itemvalue="aspose-words" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="Stylelint" enabled="true" level="ERROR" enabled_by_default="true" />
+  </profile>
+</component>
