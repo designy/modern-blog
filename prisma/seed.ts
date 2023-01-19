@@ -3,30 +3,35 @@
  *
  * @link https://www.prisma.io/docs/guides/database/seed-database
  */
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client'
 
-const prisma = new PrismaClient();
+const prisma = new PrismaClient()
 
-async function main() {
-  const firstPostId = '5c03994c-fc16-47e0-bd02-d218a370a078';
-  await prisma.post.upsert({
-    where: {
-      id: firstPostId,
-    },
-    create: {
-      id: firstPostId,
-      title: 'First Post',
-      text: 'This is an example post generated from `prisma/seed.ts`',
-    },
-    update: {},
-  });
+async function main () {
+  const user = await prisma.user.create(
+    {
+      data:
+        {
+          email: 'a.esmaeili.sut@gmail.com',
+          name: 'ali esmaeili'
+        }
+    })
+  await prisma.post.create(
+    {
+      data:
+        {
+          title: 'First Post',
+          content: 'This is an example post generated from `prisma/seed.ts`',
+          authorId: user.id
+        }
+    })
 }
 
 main()
   .catch((e) => {
-    console.error(e);
-    process.exit(1);
+    console.error(e)
+    process.exit(1)
   })
   .finally(async () => {
-    await prisma.$disconnect();
-  });
+    await prisma.$disconnect()
+  })
