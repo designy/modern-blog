@@ -8,22 +8,31 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main () {
-  const user = await prisma.user.create(
+  const firstId = 1
+  const user = await prisma.user.upsert(
     {
-      data:
+      where: {
+        id: firstId
+      },
+      create:
         {
           email: 'a.esmaeili.sut@gmail.com',
           name: 'ali esmaeili'
-        }
+        },
+      update: {}
     })
-  await prisma.post.create(
+  await prisma.post.upsert(
     {
-      data:
+      where: {
+        id: firstId
+      },
+      create:
         {
           title: 'First Post',
           content: 'This is an example post generated from `prisma/seed.ts`',
           authorId: user.id
-        }
+        },
+      update: {}
     })
 }
 
