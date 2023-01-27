@@ -21,45 +21,60 @@ export const appRouter = router({
         time: new Date()
       }
     }),
-  posts: publicProcedure.input(
-    z.object({
-      limit: z.number().min(1).max(100).nullish(),
-      cursor: z.string().nullish()
-    })
-  ).query(async ({ input, ctx }) => {
-    const limit = input.limit ?? 50
-    const { cursor } = input
+  posts:
+    publicProcedure.input(
+      z.object({
+        limit: z.number().min(1).max(100).nullish(),
+        cursor: z.string().nullish()
+      })
+    )
+      .query(async ({ input, ctx }) => {
+        const limit = input.limit ?? 50
+        const { cursor } = input
 
-    const posts = await ctx.prisma.post.findMany({
-      select: defaultPostSelect,
-      // get an extra item at the end which we'll use as next cursor
-      take: limit + 1,
-      where: {},
-      cursor: cursor
-        ? {
-            id: cursor
+        const posts = await ctx.prisma.post.findMany({
+          select: defaultPostSelect,
+          // get an extra item at the end which we'll use as next cursor
+          take: limit + 1,
+          where: {},
+          cursor: cursor
+            ? {
+                id: cursor
+              }
+            : undefined,
+          orderBy: {
+            createdAt: 'desc'
           }
-        : undefined,
-      orderBy: {
-        createdAt: 'desc'
+
+        })
+        let nextCursor: typeof cursor | undefined
+        if (posts.length > limit) {
+          // Remove the last item and use it as next cursor
+
+          const nextItem = posts.pop()!
+          nextCursor = nextItem.id
+        }
+        return {
+          items: posts.reverse(),
+          nextCursor
+        }
       }
-
+      ),
+  createPosts: publicProcedure.input(
+    z.object({
+      title: z.string()
     })
-    let nextCursor: typeof cursor | undefined
-    if (posts.length > limit) {
-      // Remove the last item and use it as next cursor
-
-      const nextItem = posts.pop()!
-      nextCursor = nextItem.id
-    }
+  ).mutation(async ({ input, ctx }) => {
+    const newPost = await ctx.prisma.post.create({
+      data: {
+        title: input.title,
+        author: { connect: { id: 1 } }
+      }
+    })
     return {
-      items: posts.reverse(),
-      nextCursor
+      item: newPost
     }
-  }
-
-  )
+  })
 })
-
 // export type definition of API
 export type AppRouter = typeof appRouter
