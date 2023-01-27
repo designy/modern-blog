@@ -4,10 +4,11 @@
 import { useMutation } from '@tanstack/vue-query'
 
 const title = ref('')
+const content = ref('')
 const { $client } = useNuxtApp()
 
 const { isLoading, isError, error, isSuccess, mutate: createPost } = useMutation({
-  mutationFn: () => $client.createPosts.mutate({ title: title.value })
+  mutationFn: () => $client.createPosts.mutate({ title: title.value, content: content.value })
 })
 
 // const mutation = $client.createPosts.mutate({ title: title.value })
@@ -16,7 +17,11 @@ const { isLoading, isError, error, isSuccess, mutate: createPost } = useMutation
 
 <template>
   <div>
-    <input v-model.trim="title">
+    <label for="title">title</label>
+    <input v-model.trim="title" name="title">
+    <label for="content">content</label>
+    <textarea v-model.trim="content" name="content" />
+
     <button :disabled="isLoading" @click="createPost">
       submit
     </button>

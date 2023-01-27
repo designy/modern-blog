@@ -6,6 +6,7 @@ const defaultPostSelect = Prisma.validator<Prisma.PostSelect>()({
   id: true,
   title: true,
   content: true,
+  author: true,
   updatedAt: true
 })
 export const appRouter = router({
@@ -63,11 +64,14 @@ export const appRouter = router({
   createPosts: publicProcedure.input(
     z.object({
       title: z.string()
+        .min(1),
+      content: z.string().nullish()
     })
   ).mutation(async ({ input, ctx }) => {
     const newPost = await ctx.prisma.post.create({
       data: {
         title: input.title,
+        content: input.content,
         author: { connect: { id: 1 } }
       }
     })

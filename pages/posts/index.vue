@@ -53,6 +53,7 @@ const {
         <th> Id </th>
         <th> Title </th>
         <th> Content </th>
+        <th> Author </th>
         <th> Last Update </th>
       </tr>
     </thead>
@@ -62,6 +63,7 @@ const {
           <td>{{ post.id }}</td>
           <td>{{ post.title }}</td>
           <td>{{ post.content }}</td>
+          <td> {{ post.author.name }}</td>
           <td>{{ post.updatedAt }}</td>
         </tr>
       </template>
